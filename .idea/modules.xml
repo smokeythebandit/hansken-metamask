@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/hansken-metamask.iml" filepath="$PROJECT_DIR$/.idea/hansken-metamask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../hansken-wallet-balance-fetcher/.idea/hansken-wallet-balance-fetcher.iml" filepath="$PROJECT_DIR$/../hansken-wallet-balance-fetcher/.idea/hansken-wallet-balance-fetcher.iml" />
     </modules>
   </component>
 </project>

@@ -33,11 +33,22 @@ class Plugin(ExtractionPlugin):
         # Get accounts
         accounts = engine_data['backgroundState']['AccountTrackerController']['accounts'].keys()
 
-        # Add accounts to trace
-        for account in accounts:
-            trace.update("account.type", "Ethereum")
-            trace.update("account.name", account)
-            logging.info(f"Found wallet address: {account}")
+        if len(accounts) > 0:
+            # Add metamask application
+            application_trace = trace.child_builder()
+            application_trace.update({
+                'name': 'Metamask',
+                'application.name': "Metamask",
+            }).build()
+
+            # Add found wallets
+            for account in accounts:
+                wallet_trace = application_trace.child_builder()
+                wallet_trace.update({
+                    "name" : account,
+                    "cryptocurrencyWallet.type": "Metamask",
+                    "cryptocurrencyWallet.misc": {"address": account}
+                }).build()
 
         log.info(f"processing trace {trace.get('name')}")
         # Add your plugin implementation here
